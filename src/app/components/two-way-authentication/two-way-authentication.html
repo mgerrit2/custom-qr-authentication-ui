@@ -1,0 +1,28 @@
+<div class="container">
+
+  <form [formGroup]="form" >
+    <div class="row">
+      <!-- Alleen tonen als er daadwerkelijk een QR-code geladen is -->
+      @if (imageBytes) {
+        <div class="qr-code-wrapper">
+          <img [src]="imageBytes"
+               [width]="200"
+               [height]="200"
+               class="profile-rect"
+               alt="2FA QR Code"
+          />
+        </div>
+      }
+    </div>
+
+    <div class="row">
+      <!-- PrimeNG Button -->
+      <p-button
+        label="Genereer QR Code"
+        (onClick)="getQrCode()"
+      />
+    </div>
+
+  </form>
+
+</div>
