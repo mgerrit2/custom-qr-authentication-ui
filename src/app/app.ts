@@ -61,18 +61,6 @@ export class App implements OnInit,OnDestroy{
     } catch(e) {
       console.log(e);
     }
-
-
-      /*
-    this.http.post(`${environment.apiUrlJwtToken}/gscience-programming-help/api/v1/jwt`, {
-      userId: 'mgerrit2',
-      roles: 'ADMIN'
-    }).subscribe((response: any) => {
-      // Save the token here so the interceptor can find it later
-      localStorage.setItem('access_token', response.access_token);
-    });
-
-       */
   }
 
   /**
