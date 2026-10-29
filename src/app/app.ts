@@ -55,6 +55,9 @@ export class App implements OnInit,OnDestroy{
     try{
       let tokenResponse = await firstValueFrom(this.authenticationRest.fetchJwt());
       sessionStorage.setItem('access_token', tokenResponse.access_token);
+
+      this.loginDisplay = true;
+
     } catch(e) {
       console.log(e);
     }
