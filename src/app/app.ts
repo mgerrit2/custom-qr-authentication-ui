@@ -79,7 +79,7 @@ export class App implements OnInit,OnDestroy{
    * Logt de gebruiker uit.
    */
   logout() {
-    localStorage.removeItem('access_token');
+    sessionStorage.removeItem('access_token');
     this.loginDisplay = false;
   }
 
