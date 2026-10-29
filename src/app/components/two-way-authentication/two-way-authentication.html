@@ -1,6 +1,21 @@
 <div class="container">
 
   <form [formGroup]="form" >
+
+    <div class="row my-4">
+      <p-floatlabel variant="in" style="display: inline-block; width: fit-content;">
+        <input pInputText
+               id="userId"
+               style="width: fit-content;"
+               autocomplete="off"
+               formControlName="userId"
+               (focusout)="userIdFocusOut()"
+        />
+        <label for="userId" class="font-semibold">User id for QR generation</label>
+      </p-floatlabel>
+    </div>
+
+
     <div class="row">
       <!-- Alleen tonen als er daadwerkelijk een QR-code geladen is -->
       @if (imageBytes) {
@@ -21,6 +36,38 @@
         label="Genereer QR Code"
         (onClick)="getQrCode()"
       />
+    </div>
+
+    <div class="row my-4">
+
+      <p-button
+        label="Validate code"
+        (onClick)="validateCode()"
+      />
+    </div>
+
+    <div class="card flex justify-center">
+
+      <p-floatlabel>
+        <input pInputText id="numberToValidate"
+               formControlName="numberToValidate"
+               autocomplete="off"
+        />
+        <label for="over_label">Number to validate</label>
+      </p-floatlabel>
+
+    </div>
+
+    <div class="card flex justify-center my-4">
+
+      <p-floatlabel>
+        <input pInputText id="isValidateCode"
+               formControlName="isValidateCode"
+               autocomplete="off"
+        />
+        <label for="over_label">Result</label>
+      </p-floatlabel>
+
     </div>
 
   </form>
