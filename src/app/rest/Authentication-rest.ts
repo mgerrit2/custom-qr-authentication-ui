@@ -9,13 +9,15 @@ import {TokenResponse} from './dto/TokenResponse';
 export class AuthenticationRest
 {
 
+  private readonly baseUrl = '/api/v1/jwt'
+
   private readonly http = inject(HttpClient);
 
-  fetchJwt(): Observable<TokenResponse> {
+  fetchJwt(userId:string): Observable<TokenResponse> {
     const url = 'http://localhost:8091/gscience-programming-help/api/v1/jwt';
 
     // Add query parameters (?userid=mgerrit2)
-    const params = new HttpParams().set('userid', 'mgerrit2');
+    const params = new HttpParams().set('userid', userId);
 
     // HttpClient post call (passing an empty body {} since curl has no body specified)
     return this.http.post<any>(url, {}, { params });
