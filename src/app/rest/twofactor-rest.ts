@@ -35,5 +35,14 @@ export class TwofactorRest {
     }
 
 
+  /**
+   * Verifies the 6-digit code against the temporary secret.
+   */
+  public verifyCode(verifyRequest: VerifyRequest): Observable<string> {
+    const url = `${environment.apiUrl}${this.baseUrl}/verify`;
+
+    // Uses text responseType because the backend returns empty or raw text strings on success/failure
+    return this.http.post(url, verifyRequest, { responseType: 'text' });
+  }
 
 }
