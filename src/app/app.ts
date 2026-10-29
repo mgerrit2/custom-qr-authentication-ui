@@ -7,6 +7,7 @@ import {ButtonModule} from 'primeng/button';
 import {CommonModule} from '@angular/common';
 import {HttpClient} from '@angular/common/http';
 import {AuthenticationRest} from './rest/Authentication-rest';
+import {SharedUserService} from './components/communication/shared-user-service';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ export class App implements OnInit,OnDestroy{
 
   private readonly http = inject(HttpClient);
   private readonly authenticationRest = inject(AuthenticationRest);
+  private readonly sharedUserService = inject(SharedUserService);
 
   /** Geeft aan of de gebruiker is ingelogd */
   loginDisplay = false;
@@ -46,14 +48,15 @@ export class App implements OnInit,OnDestroy{
 
   }
 
-
   /**
-   * Start het inlogproces via een MSAL redirect. `${environment.apiUrl}/gscience-programming-help/api/v1/jwt`;
+   * Login the user
    */
   async login() {
 
     try{
-      let tokenResponse = await firstValueFrom(this.authenticationRest.fetchJwt());
+
+      let tokenResponse
+        = await firstValueFrom(this.authenticationRest.fetchJwt(this.sharedUserService.sharedData()));
       sessionStorage.setItem('access_token', tokenResponse.access_token);
 
       this.loginDisplay = true;
@@ -63,9 +66,7 @@ export class App implements OnInit,OnDestroy{
     }
   }
 
-  /**
-   * Logt de gebruiker uit.
-   */
+
   logout() {
     sessionStorage.removeItem('access_token');
     this.loginDisplay = false;
