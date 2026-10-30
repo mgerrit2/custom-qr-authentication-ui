@@ -13,7 +13,7 @@ import {VerifyRequest} from '../../rest/dto/VerifyRequest';
   selector: 'app-two-way-authentication',
   imports: [ReactiveFormsModule,ButtonModule,FloatLabel,InputText],
   templateUrl: './two-way-authentication.html',
-  styleUrl: './two-way-authentication.css',
+  styleUrl: './two-way-authentication.scss',
 })
 export class TwoWayAuthentication implements OnInit{
 
@@ -33,7 +33,7 @@ export class TwoWayAuthentication implements OnInit{
 
   form = new FormGroup({
     numberToValidate: new FormControl(''),
-    isValidateCode: new FormControl(''),
+    isValidateCode: new FormControl({ value: '', disabled: true }),
     userId: new FormControl(''),
   });
 
