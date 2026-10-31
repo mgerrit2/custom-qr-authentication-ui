@@ -69,6 +69,7 @@ export class TwoWayAuthentication implements OnInit{
         this.imageBytes = this.sanitizer.bypassSecurityTrustUrl(res.qrCode);
       },
       error: (err) => {
+        this.imageBytes = '';
         console.error('Fout bij laden QR code', err);
       }
     });
