@@ -1,4 +1,4 @@
 export const environment = {
-  apiUrl: 'http://localhost:8092',
-  apiUrlJwtToken: 'http://localhost:8091',
+  apiUrl: 'https://custom-qr-authentication-webservice.onrender.com',
+  apiUrlJwtToken: 'https://gscience-programming-help.onrender.com',
 };
