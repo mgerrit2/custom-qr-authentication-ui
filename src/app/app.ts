@@ -88,7 +88,7 @@ export class App implements OnInit,OnDestroy{
 
 
   logout() {
-    sessionStorage.removeItem('access_token');
+    this.authService.setToken('');
     this.loginDisplay = false;
   }
 
