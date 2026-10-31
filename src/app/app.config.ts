@@ -11,12 +11,13 @@ import {provideAnimationsAsync} from '@angular/platform-browser/animations/async
 import Aura from '@primeuix/themes/aura';
 import {authInterceptor} from './interceptor/authInterceptor';
 import {provideHttpClient, withInterceptors} from '@angular/common/http';
+import {ajaxBusyInterceptor} from './interceptor/ajax-busy-interceptor';
 
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(
-      withInterceptors([authInterceptor])
+      withInterceptors([authInterceptor,ajaxBusyInterceptor])
     ),
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),

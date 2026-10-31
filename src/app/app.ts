@@ -11,13 +11,14 @@ import {AuthService} from '../services/AuthService';
 import {FloatLabel} from 'primeng/floatlabel';
 import {InputText} from 'primeng/inputtext';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {Spinner} from './components/spinner/spinner';
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet,
     MenubarModule,
     CommonModule,
-    ButtonModule, FloatLabel, InputText, ReactiveFormsModule],
+    ButtonModule, FloatLabel, InputText, ReactiveFormsModule,Spinner,RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

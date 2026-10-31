@@ -9,14 +9,14 @@ export class AjaxBusyService {
   // Use inject() to get the dependency
   private readonly spinner = inject(SpinnerService);
 
-  private readonly requestCounter: number = 0;
+  private requestCounter: number = 0;
 
   // Tweak as needed
   private readonly showDelayMs = 150;
   private readonly minVisibleMs = 300;
 
-  private readonly showTimerId: any = null;
-  private readonly shownAt: number | null = null;
+  private showTimerId: any = null;
+  private shownAt: number | null = null;
 
   // Constructor is now implicit, but for clarity:
   // constructor() {}
@@ -25,9 +25,9 @@ export class AjaxBusyService {
   beginRequest(): void {
     console.log('AjaxBusyInterceptor::beginRequest');
 
-     this.spinner.show();
 
-    /*
+
+
     this.requestCounter = Math.max(this.requestCounter, 0) + 1;
 
     if (this.requestCounter === 1) {
@@ -38,15 +38,15 @@ export class AjaxBusyService {
         this.spinner.show();
       }, this.showDelayMs);
     }
-      */
+
   }
 
   // **Original private endRequest()**
   endRequest(): void {
     console.log('AjaxBusyInterceptor::endRequest');
 
-    this.spinner.hide();
-    /*
+
+
     this.requestCounter = Math.max(this.requestCounter, 1) - 1;
 
     if (this.requestCounter === 0) {
@@ -76,6 +76,6 @@ export class AjaxBusyService {
         }
       }
     }
-      */
+
   }
 }
