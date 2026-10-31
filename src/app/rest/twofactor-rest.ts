@@ -22,11 +22,6 @@ export class TwofactorRest {
   public setupDevice(): Observable<SetupResponse> {
       const url = `${environment.apiUrl}${this.baseUrl}/setup`;
 
-      // CRITICAL: You must pass userDto as the second argument so the backend receives the @RequestBody
-        /*
-
-
-         */
         return this.http.get<SetupResponse>(url).pipe(
             tap(qrResponse => {
                 console.log('2FA QR Code succesvol gegenereerd:', qrResponse);
