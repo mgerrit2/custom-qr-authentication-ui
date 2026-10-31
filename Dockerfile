@@ -18,7 +18,7 @@ FROM nginx:alpine
 RUN rm -rf /usr/share/nginx/html/*
 
 # Kopieer de gebouwde bestanden (inhoud van nl-BE) naar de Nginx root
-COPY --from=build /app/dist/msal-angular-sample/browser/. /usr/share/nginx/html/
+COPY --from=build /app/dist/custom-qr-authentication-ui/browser/. /usr/share/nginx/html/
 
 # Kopieer je aangepaste nginx configuratie
 COPY nginx.conf /etc/nginx/conf.d/default.conf
