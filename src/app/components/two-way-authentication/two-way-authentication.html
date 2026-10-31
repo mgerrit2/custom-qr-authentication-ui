@@ -12,6 +12,12 @@
                alt="2FA QR Code"
           />
         </div>
+      } @else {
+        <!-- Show default empty placeholder rectangle -->
+        <div class="profile-rect placeholder-rect"
+             style="width: 200px; height: 200px; display: flex; align-items: center; justify-content: center; background-color: #f8f9fa; border: 2px dashed #dee2e6;">
+          <span class="text-muted small">No QR Code</span>
+        </div>
       }
     </div>
 
