@@ -1,15 +1,19 @@
 import { HttpInterceptorFn } from '@angular/common/http';
+import {AuthService} from '../../services/AuthService';
+import {inject} from '@angular/core';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   try {
+
+    const authService = inject(AuthService);
+
 
     // Optional: Skip adding token for external/public APIs
     if (req.url.includes('api.public-service.com')) {
       return next(req);
     }
 
-    // Retrieve token from localStorage or your AuthService
-    const authToken = sessionStorage.getItem('access_token');
+    const authToken = authService.accessToken(); // Read directly from the signal
 
     // Temporary debug log for production troubleshooting
     console.log('Intercepting URL:', req.url);

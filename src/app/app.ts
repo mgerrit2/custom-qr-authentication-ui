@@ -7,11 +7,17 @@ import {ButtonModule} from 'primeng/button';
 import {CommonModule} from '@angular/common';
 import {HttpClient} from '@angular/common/http';
 import {AuthenticationRest} from './rest/Authentication-rest';
-import {SharedUserService} from './components/communication/shared-user-service';
+import {AuthService} from '../services/AuthService';
+import {FloatLabel} from 'primeng/floatlabel';
+import {InputText} from 'primeng/inputtext';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, MenubarModule,CommonModule, ButtonModule],
+  imports: [RouterOutlet,
+    MenubarModule,
+    CommonModule,
+    ButtonModule, FloatLabel, InputText, ReactiveFormsModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -19,7 +25,18 @@ export class App implements OnInit,OnDestroy{
 
   private readonly http = inject(HttpClient);
   private readonly authenticationRest = inject(AuthenticationRest);
-  private readonly sharedUserService = inject(SharedUserService);
+  private readonly authService = inject(AuthService);
+
+  currentUser: string ="mgerrit2";
+
+  form = new FormGroup({
+    userId: new FormControl(''),
+  });
+
+  get getUserId(): FormControl {
+    // We cast it to FormControl to easily access its value property later
+    return this.form.get('userId') as FormControl;
+  }
 
   /** Geeft aan of de gebruiker is ingelogd */
   loginDisplay = false;
@@ -35,6 +52,7 @@ export class App implements OnInit,OnDestroy{
   ) {}
 
   ngOnInit() {
+    this.getUserId.setValue(this.currentUser);
 
     //region Menu instellingen configureren
     this.items = [
@@ -55,9 +73,11 @@ export class App implements OnInit,OnDestroy{
 
     try{
 
-      let tokenResponse
-        = await firstValueFrom(this.authenticationRest.fetchJwt(this.sharedUserService.sharedData()));
-      sessionStorage.setItem('access_token', tokenResponse.access_token);
+      const tokenResponse
+        = await firstValueFrom(this.authenticationRest.fetchJwt(this.currentUser));
+
+      // Use the service to set the token immediately
+      this.authService.setToken(tokenResponse.access_token);
 
       this.loginDisplay = true;
 
@@ -77,4 +97,7 @@ export class App implements OnInit,OnDestroy{
     this._destroying$.complete();
   }
 
+  userIdFocusOut():void{
+    this.currentUser = this.getUserId.value;
+  }
 }

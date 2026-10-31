@@ -6,7 +6,6 @@ import {UserDTO} from '../../rest/dto/UserDTO';
 import {TwofactorRest} from '../../rest/twofactor-rest';
 import {FloatLabel} from 'primeng/floatlabel';
 import {InputText} from 'primeng/inputtext';
-import {SharedUserService} from '../communication/shared-user-service';
 import {VerifyRequest} from '../../rest/dto/VerifyRequest';
 
 @Component({
@@ -19,22 +18,16 @@ export class TwoWayAuthentication implements OnInit{
 
   private readonly mfaService = inject(TwofactorRest);
   private readonly sanitizer = inject(DomSanitizer);
-  private readonly sharedUserService = inject(SharedUserService);
-
 
   imageBytes: SafeUrl = ''
 
   ngOnInit(): void {
-    this.getUserId.setValue("mgerrit2");
-
-    this.sendUserId(this.getUserId.value)
   }
 
 
   form = new FormGroup({
     numberToValidate: new FormControl(''),
     isValidateCode: new FormControl({ value: '', disabled: true }),
-    userId: new FormControl(''),
   });
 
   get getNumberToValidate(): FormControl {
@@ -46,21 +39,6 @@ export class TwoWayAuthentication implements OnInit{
     // We cast it to FormControl to easily access its value property later
     return this.form.get('isValidateCode') as FormControl;
   }
-
-  get getUserId(): FormControl {
-    // We cast it to FormControl to easily access its value property later
-    return this.form.get('userId') as FormControl;
-  }
-
-  public userIdFocusOut(): void{
-    this.sendUserId(this.getUserId.value)
-  }
-
-  sendUserId(userId: string): void {
-   this.sharedUserService.updateUserId(userId)
-
-  }
-
 
   public  getQrCode(): void {
 

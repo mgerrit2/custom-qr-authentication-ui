@@ -1,20 +1,6 @@
 <div class="container">
 
   <form [formGroup]="form" >
-
-    <div class="row my-4">
-      <p-floatlabel variant="on">
-        <input pInputText
-               id="userId"
-               autocomplete="off"
-               formControlName="userId"
-               (focusout)="userIdFocusOut()"
-        />
-        <label for="userId" class="font-semibold">User id for QR generation</label>
-      </p-floatlabel>
-    </div>
-
-
     <div class="row">
       <!-- Alleen tonen als er daadwerkelijk een QR-code geladen is -->
       @if (imageBytes) {
