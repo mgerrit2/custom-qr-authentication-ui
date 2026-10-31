@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "msal-angular-sample": {
+    "custom-qr-authentication-ui": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -77,13 +77,13 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "msal-angular-sample:build:production"
+              "buildTarget": "custom-qr-authentication-ui:build:production"
             },
             "development": {
-              "buildTarget": "msal-angular-sample:build:development"
+              "buildTarget": "custom-qr-authentication-ui:build:development"
             },
             "local": {
-              "buildTarget": "msal-angular-sample:build:local"
+              "buildTarget": "custom-qr-authentication-ui:build:local"
             }
           },
           "defaultConfiguration": "development"
