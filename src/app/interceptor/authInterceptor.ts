@@ -15,10 +15,6 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
     const authToken = authService.accessToken(); // Read directly from the signal
 
-    // Temporary debug log for production troubleshooting
-    console.log('Intercepting URL:', req.url);
-    console.log('Token found:', !!authToken);
-
     if (authToken) {
       // Clone the request and add the Authorization header
       const authReq = req.clone({
