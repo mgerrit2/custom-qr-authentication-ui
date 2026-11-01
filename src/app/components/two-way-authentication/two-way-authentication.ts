@@ -7,10 +7,20 @@ import {TwofactorRest} from '../../rest/twofactor-rest';
 import {FloatLabel} from 'primeng/floatlabel';
 import {InputText} from 'primeng/inputtext';
 import {VerifyRequest} from '../../rest/dto/VerifyRequest';
+import {Accordion, AccordionContent, AccordionHeader, AccordionModule, AccordionPanel} from 'primeng/accordion';
 
 @Component({
   selector: 'app-two-way-authentication',
-  imports: [ReactiveFormsModule,ButtonModule,FloatLabel,InputText],
+  imports: [
+    ReactiveFormsModule,
+    ButtonModule,
+    FloatLabel,
+    InputText,
+    Accordion,
+    AccordionPanel,
+    AccordionHeader,
+    AccordionContent,
+    AccordionModule,],
   templateUrl: './two-way-authentication.html',
   styleUrl: './two-way-authentication.scss',
 })
