@@ -31,7 +31,10 @@ export class TwoWayAuthentication implements OnInit{
 
   imageBytes: SafeUrl = ''
 
+  noValidCode: string  = '';
+
   ngOnInit(): void {
+
   }
 
 
@@ -94,17 +97,14 @@ export class TwoWayAuthentication implements OnInit{
     this.mfaService.verifyCode(verifyRequest).subscribe({
       next: (res) => {
         this.getIsValidateCode.setValue('valid code');
-        // bypassSecurityTrustUrl zorgt ervoor dat Angular de data:image/png;base64 string blindelings vertrouwt
-        console.log(res);
+        this.noValidCode= "";
       },
       error: (err) => {
         this.getIsValidateCode.setValue(err.error);
-        console.error('Fout bij laden QR code',err.error);
+        this.noValidCode= "has-error";
       }
     });
 
   }
-
-
 
 }
