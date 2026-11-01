@@ -50,12 +50,13 @@
 
     </div>
 
-    <div class="flex justify-center my-4">
+    <div class="flex justify-center my-4 has-error" [class.has-error]="noValidCode" >
 
       <p-floatlabel>
         <input pInputText id="isValidateCode"
                formControlName="isValidateCode"
                autocomplete="off"
+               class="p-inputtext-lg w-80"
         />
         <label for="over_label">Result</label>
       </p-floatlabel>

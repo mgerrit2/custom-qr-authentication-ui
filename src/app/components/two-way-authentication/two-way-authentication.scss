@@ -1,0 +1,13 @@
+/* Default styles */
+:host ::ng-deep p-floatlabel label {
+  color: #6c757d;
+}
+
+/* Conditional styles when .has-error is active */
+:host ::ng-deep .has-error p-floatlabel label {
+  color: #dc3545 !important;
+}
+
+:host ::ng-deep .has-error p-floatlabel input {
+  border-color: #dc3545 !important;
+}
