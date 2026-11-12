@@ -1,4 +1,4 @@
-import {Component, OnInit, signal, OnDestroy, inject} from '@angular/core';
+import {Component, OnInit,OnDestroy, inject} from '@angular/core';
 import {Router, RouterOutlet} from '@angular/router';
 import { MenubarModule } from 'primeng/menubar';
 import { MenuItem } from 'primeng/api';
@@ -27,8 +27,9 @@ export class App implements OnInit,OnDestroy{
   private readonly http = inject(HttpClient);
   private readonly authenticationRest = inject(AuthenticationRest);
   private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
 
-  currentUser: string ="mgerrit2";
+  currentUser ="mgerrit2";
 
   form = new FormGroup({
     userId: new FormControl(''),
@@ -47,10 +48,6 @@ export class App implements OnInit,OnDestroy{
 
   /** Subject om actieve subscriptions te stoppen bij vernietiging van de component (memory leak prevention) */
   private readonly _destroying$ = new Subject<void>();
-
-  constructor(
-    private router: Router
-  ) {}
 
   ngOnInit() {
     this.getUserId.setValue(this.currentUser);

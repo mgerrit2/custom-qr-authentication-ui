@@ -2,8 +2,8 @@
 
 ## implementation
 
-### Login and store the bearer token
-
+### Login and store the bearer token(project flow)
+![custom-qr-authentication.jpg](images/custom-qr-authentication.jpg)
 
 ### interceptor to provide bearer token to the rest API
 

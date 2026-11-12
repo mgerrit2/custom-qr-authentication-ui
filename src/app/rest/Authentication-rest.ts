@@ -20,6 +20,6 @@ export class AuthenticationRest
     const params = new HttpParams().set('userid', userId);
 
     // HttpClient post call (passing an empty body {} since curl has no body specified)
-    return this.http.post<any>(this.baseUrl, {}, { params });
+    return this.http.post<TokenResponse>(this.baseUrl, {}, { params });
   }
 }
