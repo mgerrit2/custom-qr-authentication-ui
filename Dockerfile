@@ -8,6 +8,10 @@ RUN npm ci
 
 # Kopieer de rest van de code en bouw de app
 COPY . .
+
+# Voer de linter uit om codekwaliteit te controleren
+RUN npm run lint
+
 # FIX: Voeg --base-href / toe zodat de scripts in de root worden gezocht
 RUN npm run build -- --configuration development --base-href /
 
